@@ -1,4 +1,4 @@
-### <div align="center"> <h1> VGSales Regression Project </h1> </div>
+#### <div align="center"> <h1> VGSales Regression Project </h1> </div>
 
 <p align="center">
   <img src="https://github.com/Swagath123Koyada/VideoGameSalesRegressionProject/assets/164196153/ec4646d0-d4ca-44c0-aa2d-219d2e1b9963" alt="">
