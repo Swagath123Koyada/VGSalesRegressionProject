@@ -113,23 +113,31 @@ The dataset contains 12 unique values in the Genre variable with Action games be
 
 Out of the 31 unique values in the dataset for the Platform variable "Dual Screen (DS)" emerges as the most predominant platform, closely followed by "PS2".
 
+### One-Hot Encoding
 
+**Categorical data is converted into numerical data using one-hot encoding. This is essential for regression analysis which requires numerical input.**
 
+Cat_Data = pd.get_dummies(Cat_Data,columns =['Genre','Platform'],dtype=int)
 
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/fc636c56-3aff-44bb-8658-491a1232e024)
 
+Now, we have 46 columns in our Categorical DataSet.
 
+**We have Categorical Data in our Dataframe but we only need numerical, so we need to remove these variables from our Dataframe.**
 
+### Copying the Dataframe and drop the variables
 
+Cat_Data_copy = Cat_Data.copy()
 
+Copy the DataFrame so that the Original data will not get lost.
 
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/d82a23d2-d162-456d-9c4e-783d2c3552af)
 
+### Now Merge both Num_Data and Cat_Data
 
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/33a4e37b-d72a-4710-9ccf-affa83bb7277)
 
-
-
-
-
-
+After merging both the Num_Data and Cat_Data_copy datasets, we have assigned the name VGSales_1 to the merged dataset and the shape of the merged dataset is 16598 records and 51 variables.
 
 
 
