@@ -139,11 +139,27 @@ Copy the DataFrame so that the Original data will not get lost.
 
 After merging both the Num_Data and Cat_Data_copy datasets, we have assigned the name VGSales_1 to the merged dataset and the shape of the merged dataset is 16598 records and 51 variables.
 
+## Feature Engineering
 
+After merging the Datasets, we have done some Feature Engineering and Correlation analysis on our Data to understand which features are most strongly correlated with the target variable (Global_Sales).
 
+corr = VGSales_1.corrwith(VGSales_1.Global_Sales).abs().sort_values(ascending = False)
 
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/aed39b4a-652d-4a20-9392-bfe01d95c827)
 
+According to our data here in correlation analysis, we have taken the cut off upto 0.05.
 
+This would mean that whatever the variables have been excluded that have weaker correlations with the target variable.
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/c9d1fd25-753c-4f55-8002-58038055a603)
+
+These are the variables that have strong correlations with the target variable.
+
+**NOTE :**
+
+Selecting correlation coefficients between features is based on the dataset being analyzed. Different datasets may exhibit different correlation patterns, and the choice of which correlations to consider significant (e.g., greater than 0.05) depends on the specific characteristics and goals of the analysis.
+
+### Splitting the final dataset intoTraining and Testing dataset
 
 
 
