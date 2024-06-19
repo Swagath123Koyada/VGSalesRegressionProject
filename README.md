@@ -161,28 +161,92 @@ Selecting correlation coefficients between features is based on the dataset bein
 
 ### Splitting the final dataset intoTraining and Testing dataset
 
+- It's crucial to ensure that the data is split randomly to prevent any biases in the training or testing datasets.
 
+- The choice of test_size depends on the size of your dataset and the desired trade-off between training and testing data.
 
+- After splitting, the training set (X_train and y_train) is used to train your machine learning model, and the testing set (X_test and y_test) is used to evaluate its performance.
 
+**So to start with Training and Testing Data we need to import Some libraries and modules.**
 
+import sklearn
 
+from sklearn.model_selection import train_test_split
 
+log_train,log_test = train_test_split(VG_1_copy,test_size = 0.3, random_state = 123)
 
+By using this code, we can split a DataFrame into training and testing sets using the train_test_split function from the sklearn.model_selection module.
 
+The shape of the train and test datasets are 11618 records, 12 variables and 4980 records, 12 variables respectively.
 
+## Building the Regression model
 
+To build a regression model, first of all import library and module.
 
+from sklearn import datasets, linear_model
 
+By using formula of Ordinary Least Squares (OLS) regression models using the statsmodels library.
 
+formula = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales’]))
 
+formula2 = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales', 'Platform_GB’]))
 
+formula3 = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales', 'Platform_GB', 'Genre_Platform’]))
 
+formula4 = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales', 'Platform_GB', 'Genre_Platform', 'Platform_NES’]))
 
+formula5 = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales', 'Platform_GB', 'Genre_Platform', 'Platform_NES', 'Year’]))
 
+formula6 = 'Global_Sales~' + '+'.join(train.columns.difference(['Global_Sales', 'Platform_GB', 'Genre_Platform', 'Platform_NES', 'Year', 'Genre_Adventure']))
 
+Fitting the OLS Regression Model using the formula specified in formula6.
 
+model = smf.ols(formula6, train).fit()
 
+And then Printing the Model’s detailed Summary of the regression model by using.
 
+print(model.summary())
 
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/07ba50b4-83fb-46fd-953f-8184503aafd0)
 
+Making Predictions by using the fitted model to predict the target variable (Global_Sales) for the training data.
 
+pred_Global_Sales = model.predict(train)
+
+pred_Global_Sales
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/a237f55a-3d9c-43b9-9872-28bdef1db1d7)
+
+train['Global_Sales']
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/a306b8a1-9529-4157-bd9b-01d447b96a4e)
+
+## Model Results
+
+### Comparison of actual vs. predicted Global_Sales
+
+Result = pd.DataFrame(pd.concat([train['Global_Sales'],pred_Global_Sales],axis = 1))
+
+Result = Result.rename(columns = {0:'Prediction'})
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/be11c973-1556-49f6-a03e-fd4af155f72a)
+
+Result['Error'] = np.abs(Result['Global_Sales'] - Result['Prediction'])
+
+Result = Result.rename(columns = {0:'Prediction’})
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/08eb9ab9-2870-45a7-bdb1-94788aa48b17)
+
+Result['Percent_Error'] = (Result['Error']/Result['Global_Sales'])*100
+
+Result = Result.rename(columns = {0:'Prediction’})
+
+![image](https://github.com/Swagath123Koyada/VGSalesRegressionProject/assets/164196153/9afd4f36-1840-4ad4-b154-d0ec54e7c027)
+
+MAPE = np.round(np.mean(Result['Percent_Error']),2)
+
+**MAPE error is coming out to be 3.29 which is less than 10-12%. So we can say it is a very good regression model.**
+
+## Conclusion
+
+The project successfully developed a regression model to predict global video game saleswith a high level of accuracy, as evidenced by the low MAPE of 3.29%. This indicates that the model’s predictions are, on average, very close to the actual sales values.The insights gained from the correlation analysis and feature importance can helpstakeholders in making informed decisions to maximize video game sales.
