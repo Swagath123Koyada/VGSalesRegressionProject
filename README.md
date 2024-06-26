@@ -29,7 +29,7 @@ This project aims to analyze and predict video game sales using regression model
 
 - Source: VideoGameSales.csv
 - Size: 16,598 records and 11 variables.
-- Variables: Includes Name, Platform, Year, Genre, Publisher, NA_Sales, EU_Sales, JP_Sales, Other_Sales, Global_Sales.
+- Variables Includes : Name, Platform, Year, Genre, Publisher, NA_Sales, EU_Sales, JP_Sales, Other_Sales, Global_Sales.
 
 ## Let's Get Started :
 
