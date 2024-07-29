@@ -1,7 +1,7 @@
 #### <div align="center"> <h1> Video Game Sales Regression Project </h1> </div>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dc2c35bc-f3b6-4c7e-bd41-3ea2a4187339" width="350"/> alt="">
+  <img src="https://github.com/user-attachments/assets/dc2c35bc-f3b6-4c7e-bd41-3ea2a4187339" width="350"/>
 </p>
 
 Welcome to VideoGameSalesRegressionProject repositary, In this project we aim to analyze and predict video game sales using regression models. The dataset includes various attributes related to video games, such as sales figures across different regions, genre, and publisher. The goal is to build a regression model that can accurately predict sales based on these attributes. 
